@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>What are we cooking? 🍴</title>
+  <meta name="description" content="16 dishes. One winner. Un metodo scientificamente rigoroso per decidere cosa cucinare.">
+  <meta name="theme-color" content="#FBF6EE">
+  <meta property="og:title" content="What are we cooking? 🍴">
+  <meta property="og:description" content="16 dishes. One winner.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app">
+
+    <!-- ─────────────── INTRO ─────────────── -->
+    <section id="screen-intro" class="screen screen-intro" hidden>
+      <div class="intro-inner">
+        <p class="eyebrow">Pranzo · edizione speciale</p>
+        <h1 class="title">What are we <em>cooking?</em> <span class="title-emoji" aria-hidden="true">🍴</span></h1>
+        <p class="subtitle">16 dishes. One winner.</p>
+        <p class="intro-text">Ho trovato un metodo scientificamente rigoroso per decidere cosa mangiare.</p>
+        <button type="button" class="btn btn-primary" id="start-btn">
+          LET'S DECIDE <span class="btn-arrow" aria-hidden="true">→</span>
+        </button>
+      </div>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track" id="marquee"></div>
+      </div>
+
+      <p class="fine-print">
+        100% vegan · 0% discussioni ·
+        <button type="button" class="btn-link btn-link-inline" id="peek-btn">sbircia il menu</button>
+      </p>
+    </section>
+
+    <!-- ─────────────── GAME ─────────────── -->
+    <section id="screen-game" class="screen screen-game" hidden>
+      <header class="game-header">
+        <div class="game-meta">
+          <p class="round-label" id="round-label">Round of 16</p>
+          <p class="round-count" id="round-count">8 sfide rimanenti</p>
+        </div>
+        <button type="button" class="btn-ghost" id="restart-btn">↺ Ricomincia</button>
+      </header>
+
+      <div class="progress" id="progress" role="progressbar" aria-label="Avanzamento del torneo"
+           aria-valuemin="0" aria-valuemax="15" aria-valuenow="0">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+
+      <p class="quip" id="quip" aria-live="polite"></p>
+
+      <div class="arena" id="arena"></div>
+    </section>
+
+    <!-- ─────────────── WINNER ─────────────── -->
+    <section id="screen-winner" class="screen screen-winner" hidden>
+      <div class="winner-inner">
+        <div class="trophy" aria-hidden="true">🏆</div>
+        <p class="eyebrow" id="winner-eyebrow">We have a winner</p>
+
+        <div class="winner-media" id="winner-media"></div>
+
+        <h2 class="winner-name" id="winner-name"></h2>
+        <p class="winner-verdict" id="winner-verdict"></p>
+        <p class="winner-line" id="winner-line"></p>
+        <p class="winner-path" id="winner-path"></p>
+
+        <div class="winner-actions">
+          <button type="button" class="btn btn-primary" id="share-btn">SEND THE VERDICT <span aria-hidden="true">📩</span></button>
+          <button type="button" class="btn btn-secondary" id="again-btn">PLAY AGAIN</button>
+          <button type="button" class="btn-link" id="all-btn">SEE ALL 16 DISHES</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Round transition -->
+  <div class="interstitial" id="interstitial" hidden>
+    <div class="interstitial-inner">
+      <p class="eyebrow" id="inter-kicker">Prossimo round</p>
+      <p class="interstitial-title" id="inter-title"></p>
+      <p class="interstitial-sub" id="inter-sub"></p>
+    </div>
+  </div>
+
+  <!-- All dishes -->
+  <dialog class="sheet" id="dishes-dialog" aria-labelledby="dishes-title">
+    <div class="sheet-head">
+      <h2 id="dishes-title">I 16 contendenti</h2>
+      <button type="button" class="sheet-close" id="dialog-close" aria-label="Chiudi">✕</button>
+    </div>
+    <ul class="dish-list" id="dish-list"></ul>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
